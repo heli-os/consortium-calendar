@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: consortium-calendar-assets
