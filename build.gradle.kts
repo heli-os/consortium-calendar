@@ -18,7 +18,7 @@ allprojects {
     }
 }
 
-val nonDependenciesProjects = listOf("commons")
+val nonDependenciesProjects = listOf("commons", "consortium-calendar-assets")
 configure(subprojects.filter { it.name !in nonDependenciesProjects }) {
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
