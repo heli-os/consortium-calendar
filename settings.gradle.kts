@@ -17,6 +17,7 @@ pluginManagement {
 
 rootProject.name = "consortium-calendar"
 include(":commons")
+include(":commons:common-model")
 include(":commons:health-check")
 include(":commons:test-fixtures")
 include(":commons:logback-appender")
