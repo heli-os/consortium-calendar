@@ -44,6 +44,7 @@ configure(subprojects.filter { it.name !in nonDependenciesProjects }) {
         // Spring Boot Dependencies
         implementation("org.springframework.boot:spring-boot-starter-web")
         implementation("org.springframework.boot:spring-boot-starter-aop")
+        implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
         // Test
         testImplementation("org.springframework.boot:spring-boot-starter-test")

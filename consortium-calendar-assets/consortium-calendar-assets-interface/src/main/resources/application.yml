@@ -1,3 +1,6 @@
 spring:
   application:
     name: consortium-calendar-assets
+  profiles:
+    include:
+      - persistence-database

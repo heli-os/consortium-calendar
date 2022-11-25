@@ -7,7 +7,7 @@ services:
     ports:
       - '3306:3306'
     environment:
-      MYSQL_DATABASE: 'consortium-calendar-db'
+      MYSQL_DATABASE: 'consortium-calendar'
       MYSQL_ROOT_PASSWORD: 'local-password-123!'
     command:
       - '--character-set-server=utf8mb4'
