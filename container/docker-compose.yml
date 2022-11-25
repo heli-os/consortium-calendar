@@ -1,0 +1,22 @@
+version: "3"
+services:
+  consortium-calendar-mysql:
+    image: mysql:5.7
+    container_name: 'consortium-calendar-mysql'
+    platform: linux/amd64
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_DATABASE: 'consortium-calendar-db'
+      MYSQL_ROOT_PASSWORD: 'local-password-123!'
+    command:
+      - '--character-set-server=utf8mb4'
+      - '--collation-server=utf8mb4_unicode_ci'
+    volumes:
+      - '~/mysql/consortium-calendar:/var/lib/mysql'
+  consortium-calendar-redis:
+    image: redis:alpine
+    container_name: 'consortium-calendar-redis'
+    command: 'redis-server --port 6379'
+    ports:
+      - '6379:6379'
