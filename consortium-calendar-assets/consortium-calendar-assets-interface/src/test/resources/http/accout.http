@@ -1,0 +1,21 @@
+### 회원가입 - 성공
+POST http://localhost:8080/api/v1/account
+Content-Type: application/json
+
+{
+  "name": "Heli",
+  "email": "test@example.com",
+  "phoneNumber": "010-1111-2222",
+  "password": "password"
+}
+
+### 회원가입 - 파라미터 검증 실패
+POST http://localhost:8080/api/v1/account
+Content-Type: application/json
+
+{
+  "name": "Heli",
+  "email": "",
+  "phoneNumber": "010-1111-2222",
+  "password": "password"
+}

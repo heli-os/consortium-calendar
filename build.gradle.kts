@@ -33,6 +33,10 @@ configure(subprojects.filter { it.name !in nonDependenciesProjects }) {
     val striktVersion: String by project
 
     dependencies {
+        if (this@configure.name !in listOf("commons:common-model", "commons:common-util")) {
+            implementation(project(":commons:common-model"))
+            implementation(project(":commons:common-util"))
+        }
         // Kotlin Standard Library
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
@@ -44,6 +48,7 @@ configure(subprojects.filter { it.name !in nonDependenciesProjects }) {
         // Spring Boot Dependencies
         implementation("org.springframework.boot:spring-boot-starter-web")
         implementation("org.springframework.boot:spring-boot-starter-aop")
+        implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
         // Test
         testImplementation("org.springframework.boot:spring-boot-starter-test")
