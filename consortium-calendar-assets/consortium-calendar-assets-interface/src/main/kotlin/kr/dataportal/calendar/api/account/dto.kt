@@ -1,6 +1,5 @@
 package kr.dataportal.calendar.api.account
 
-import kr.dataportal.calendar.account.AccountAuthenticationType
 import kr.dataportal.calendar.account.domain.Account
 import javax.validation.constraints.NotBlank
 
@@ -29,8 +28,7 @@ data class LoginPlainAuthAccountDto(
 data class AccountResponseDto(
     val name: String,
     val email: String,
-    val phoneNumber: String,
-    val authType: AccountAuthenticationType
+    val phoneNumber: String
 )
 
 
@@ -38,6 +36,5 @@ data class AccountResponseDto(
 internal fun Account.toResponseDto() = AccountResponseDto(
     name = name,
     email = email,
-    phoneNumber = phoneNumber,
-    authType = authType
+    phoneNumber = phoneNumber
 )

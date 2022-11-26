@@ -5,7 +5,6 @@ import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import io.mockk.mockk
 import io.mockk.slot
-import kr.dataportal.calendar.account.AccountAuthenticationType
 import kr.dataportal.calendar.account.exception.AlreadyRegisteredEmailException
 import kr.dataportal.calendar.account.usecase.RegisterPlainAuthAccountUseCase
 import kr.dataportal.calendar.hashSHA512
@@ -100,7 +99,6 @@ internal class RegisterPlainAuthAccountTest {
             get { id } isEqualTo 1
             get { name } isEqualTo dummy.name
             get { phoneNumber } isEqualTo dummy.phoneNumber
-            get { authType } isEqualTo AccountAuthenticationType.PLAIN
         }
         expectThat(accountAuthenticationSlot.captured) {
             get { authText } isEqualTo hashSHA512(dummy.password)

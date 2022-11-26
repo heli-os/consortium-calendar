@@ -87,7 +87,6 @@ internal class LoginPlainAuthAccountTest {
             get { email } isEqualTo accountAuthenticationJpaEntity.accountJpaEntity.email
             get { name } isEqualTo accountAuthenticationJpaEntity.accountJpaEntity.name
             get { phoneNumber } isEqualTo accountAuthenticationJpaEntity.accountJpaEntity.phoneNumber
-            get { authType } isEqualTo AccountAuthenticationType.PLAIN
         }
         expectThat(authTextSlot.captured) {
             isEqualTo(hashSHA512(dummy.password))
