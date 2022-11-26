@@ -44,5 +44,7 @@ class InitializeLocalConfiguration(
                 name = "workspace"
             )
         )
+
+        val existedOrganization = organizationRestController.organization(organizationId = organization.id)
     }
 }
