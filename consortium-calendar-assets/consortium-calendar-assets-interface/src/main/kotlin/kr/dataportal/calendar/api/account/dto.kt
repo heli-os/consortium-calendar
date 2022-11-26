@@ -19,6 +19,13 @@ data class RegisterPlainAuthAccountDto(
     val password: String
 )
 
+data class LoginPlainAuthAccountDto(
+    @field:NotBlank
+    val email: String,
+    @field:NotBlank
+    val password: String
+)
+
 data class AccountResponseDto(
     val name: String,
     val email: String,

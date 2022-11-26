@@ -19,3 +19,30 @@ Content-Type: application/json
   "phoneNumber": "010-1111-2222",
   "password": "password"
 }
+
+### 로그인 - 성공
+POST http://localhost:8080/api/v1/account/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password"
+}
+
+### 로그인 - 실패
+POST http://localhost:8080/api/v1/account/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password2"
+}
+
+### 로그인 - 실패
+POST http://localhost:8080/api/v1/account/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": ""
+}
