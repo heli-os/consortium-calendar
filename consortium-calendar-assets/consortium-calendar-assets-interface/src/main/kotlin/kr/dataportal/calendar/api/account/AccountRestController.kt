@@ -1,6 +1,7 @@
 package kr.dataportal.calendar.api.account
 
 import kr.dataportal.calendar.account.domain.Account
+import kr.dataportal.calendar.account.usecase.LoginPlainAuthAccountUseCase
 import kr.dataportal.calendar.account.usecase.RegisterPlainAuthAccountUseCase
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -13,7 +14,8 @@ import javax.validation.Valid
  */
 @RestController
 class AccountRestController(
-    private val registerPlainAuthAccountUseCase: RegisterPlainAuthAccountUseCase
+    private val registerPlainAuthAccountUseCase: RegisterPlainAuthAccountUseCase,
+    private val loginPlainAuthAccountUseCase: LoginPlainAuthAccountUseCase
 ) {
 
     @PostMapping("/api/v1/account")
@@ -25,6 +27,17 @@ class AccountRestController(
                 name = dto.name,
                 email = dto.email,
                 phoneNumber = dto.phoneNumber,
+                password = dto.password
+            )
+        ).let(Account::toResponseDto)
+
+    @PostMapping("/api/v1/account/login")
+    fun loginPlainAuthAccount(
+        @Valid @RequestBody dto: LoginPlainAuthAccountDto
+    ): AccountResponseDto =
+        loginPlainAuthAccountUseCase.query(
+            query = LoginPlainAuthAccountUseCase.Query(
+                email = dto.email,
                 password = dto.password
             )
         ).let(Account::toResponseDto)

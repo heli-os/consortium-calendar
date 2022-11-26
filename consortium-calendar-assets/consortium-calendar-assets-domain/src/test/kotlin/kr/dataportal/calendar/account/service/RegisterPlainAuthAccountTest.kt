@@ -26,7 +26,7 @@ import java.time.LocalDateTime
  * Created on 2022. 11. 26
  */
 @ExtendWith(MockKExtension::class)
-internal class RegisterPlainAuthAccountUseCaseTest {
+internal class RegisterPlainAuthAccountTest {
 
     @MockK
     private lateinit var accountRepository: AccountRepository
@@ -75,7 +75,7 @@ internal class RegisterPlainAuthAccountUseCaseTest {
     )
 
     @Test
-    fun `이미 등록된 이메일인 경우 AlreadyRegisteredEmailException 가 발생한다`() {
+    fun `이미 등록된 이메일인 경우 AlreadyRegisteredEmailException 예외가 발생한다`() {
         every { accountRepository.findByEmail(dummy.email) } returns mockk()
 
         expectThrows<AlreadyRegisteredEmailException> { sut.command(command = dummy) }
