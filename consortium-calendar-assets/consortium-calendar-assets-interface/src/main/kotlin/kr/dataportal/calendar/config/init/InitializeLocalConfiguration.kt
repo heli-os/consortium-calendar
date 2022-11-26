@@ -31,20 +31,57 @@ class InitializeLocalConfiguration(
             )
         )
 
-        val account = accountRestController.loginPlainAuthAccount(
+        accountRestController.registerPlainAuthAccount(
+            dto = RegisterPlainAuthAccountDto(
+                name = "Heli",
+                email = "heli2@example.com",
+                phoneNumber = "010-1111-2222",
+                password = "password"
+            )
+        )
+
+        accountRestController.registerPlainAuthAccount(
+            dto = RegisterPlainAuthAccountDto(
+                name = "Heli",
+                email = "heli3@example.com",
+                phoneNumber = "010-1111-2222",
+                password = "password"
+            )
+        )
+
+        val accountFirst = accountRestController.loginPlainAuthAccount(
             dto = LoginPlainAuthAccountDto(
                 email = "heli@example.com",
                 password = "password"
             )
         )
 
+        val accountSecond = accountRestController.loginPlainAuthAccount(
+            dto = LoginPlainAuthAccountDto(
+                email = "heli2@example.com",
+                password = "password"
+            )
+        )
+
+        val accountThird = accountRestController.loginPlainAuthAccount(
+            dto = LoginPlainAuthAccountDto(
+                email = "heli3@example.com",
+                password = "password"
+            )
+        )
+
         val organization = organizationRestController.createOrganization(
-            accountId = account.id,
+            accountId = accountFirst.id,
             dto = CreateOrganizationDto(
                 name = "workspace"
             )
         )
 
         val existedOrganization = organizationRestController.organization(organizationId = organization.id)
+
+        val joinedOrganization = organizationRestController.joinOrganization(
+            accountId = accountSecond.id,
+            organizationId = existedOrganization.id
+        )
     }
 }

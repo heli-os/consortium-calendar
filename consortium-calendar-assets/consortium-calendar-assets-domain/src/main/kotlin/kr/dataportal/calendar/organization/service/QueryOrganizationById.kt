@@ -20,8 +20,8 @@ class QueryOrganizationById(
     override fun query(query: QueryOrganizationByIdUseCase.Query): Organization {
         val (organizationId) = query
 
-        val organizationJpaEntity = (organizationRepository.findByIdOrNull(id = organizationId)
-            ?: throw NotFoundOrganizationException(organizationId))
+        val organizationJpaEntity = organizationRepository.findByIdOrNull(id = organizationId)
+            ?: throw NotFoundOrganizationException(organizationId)
 
         return Organization(
             name = organizationJpaEntity.name,

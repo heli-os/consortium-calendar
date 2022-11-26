@@ -3,6 +3,7 @@ package kr.dataportal.calendar.api.organization
 import kr.dataportal.calendar.config.requiredId
 import kr.dataportal.calendar.organization.OrganizationState
 import kr.dataportal.calendar.organization.domain.Organization
+import kr.dataportal.calendar.organization.domain.OrganizationMember
 import javax.validation.constraints.NotBlank
 
 /**
@@ -20,9 +21,19 @@ data class OrganizationResponseDto(
     val state: OrganizationState
 )
 
+data class OrganizationMemberResponseDto(
+    val organizationId: Long,
+    val memberIds: List<Long>
+)
+
 // ====================================
 internal fun Organization.toResponseDto() = OrganizationResponseDto(
     id = requiredId,
     name = name,
     state = state
+)
+
+internal fun OrganizationMember.toResponseDto() = OrganizationMemberResponseDto(
+    organizationId = organizationId,
+    memberIds = memberIds
 )

@@ -1,7 +1,9 @@
 package kr.dataportal.calendar.api.organization
 
 import kr.dataportal.calendar.organization.domain.Organization
+import kr.dataportal.calendar.organization.domain.OrganizationMember
 import kr.dataportal.calendar.organization.usecase.CreateOrganizationUseCase
+import kr.dataportal.calendar.organization.usecase.JoinOrganizationUseCase
 import kr.dataportal.calendar.organization.usecase.QueryOrganizationByIdUseCase
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
@@ -13,7 +15,8 @@ import javax.validation.Valid
 @RestController
 class OrganizationRestController(
     private val createOrganizationUseCase: CreateOrganizationUseCase,
-    private val queryOrganizationByIdUseCase: QueryOrganizationByIdUseCase
+    private val queryOrganizationByIdUseCase: QueryOrganizationByIdUseCase,
+    private val joinOrganizationUseCase: JoinOrganizationUseCase
 ) {
 
     companion object {
@@ -41,4 +44,16 @@ class OrganizationRestController(
                 organizationId = organizationId
             )
         ).let(Organization::toResponseDto)
+
+    @PostMapping("/api/v1/organization/{organizationId}/member")
+    fun joinOrganization(
+        @RequestHeader(value = ACCOUNT_HEADER_NAME) accountId: Long,
+        @PathVariable organizationId: Long
+    ): OrganizationMemberResponseDto =
+        joinOrganizationUseCase.command(
+            command = JoinOrganizationUseCase.Command(
+                organizationId = organizationId,
+                accountId = accountId
+            )
+        ).let(OrganizationMember::toResponseDto)
 }
