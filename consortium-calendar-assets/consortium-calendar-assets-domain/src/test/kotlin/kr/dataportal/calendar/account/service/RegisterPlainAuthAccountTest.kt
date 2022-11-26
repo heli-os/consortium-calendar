@@ -35,10 +35,13 @@ internal class RegisterPlainAuthAccountTest {
 
     private lateinit var sut: RegisterPlainAuthAccountUseCase
 
+    private val accountSlot = slot<AccountJpaEntity>()
+    private val accountAuthenticationSlot = slot<AccountAuthenticationJpaEntity>()
+
     @BeforeEach
     fun init() {
         val now = LocalDateTime.now()
-        val accountSlot = slot<AccountJpaEntity>()
+
         every {
             accountRepository.save(capture(accountSlot))
         } answers {
@@ -49,7 +52,6 @@ internal class RegisterPlainAuthAccountTest {
             }
         }
 
-        val accountAuthenticationSlot = slot<AccountAuthenticationJpaEntity>()
         every {
             accountAuthenticationRepository.save(capture(accountAuthenticationSlot))
         } answers {
@@ -83,7 +85,6 @@ internal class RegisterPlainAuthAccountTest {
     @Test
     fun `비밀번호를 SHA512 HexString 으로 해싱하여 가입한다`() {
         every { accountRepository.findByEmail(any()) } returns null
-        val accountAuthenticationSlot = slot<AccountAuthenticationJpaEntity>()
         every {
             accountAuthenticationRepository.save(capture(accountAuthenticationSlot))
         } answers {
