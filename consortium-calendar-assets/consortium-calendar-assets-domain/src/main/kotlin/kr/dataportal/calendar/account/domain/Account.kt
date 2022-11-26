@@ -1,6 +1,5 @@
 package kr.dataportal.calendar.account.domain
 
-import kr.dataportal.calendar.account.AccountAuthenticationType
 import kr.dataportal.calendar.config.BaseDomain
 
 /**
@@ -10,6 +9,5 @@ import kr.dataportal.calendar.config.BaseDomain
 data class Account(
     val name: String,
     val email: String,
-    val phoneNumber: String,
-    val authType: AccountAuthenticationType
+    val phoneNumber: String
 ) : BaseDomain()

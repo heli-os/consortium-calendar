@@ -32,7 +32,6 @@ class LoginPlainAuthAccount(
             name = accountAuthenticationJpaEntity.accountJpaEntity.name,
             email = accountAuthenticationJpaEntity.accountJpaEntity.email,
             phoneNumber = accountAuthenticationJpaEntity.accountJpaEntity.phoneNumber,
-            authType = accountAuthenticationJpaEntity.authType
         ).entityData(accountAuthenticationJpaEntity)
     }
 }

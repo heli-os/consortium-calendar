@@ -5,7 +5,6 @@ import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import io.mockk.mockk
 import io.mockk.slot
-import kr.dataportal.calendar.account.AccountAuthenticationType
 import kr.dataportal.calendar.account.exception.AlreadyRegisteredEmailException
 import kr.dataportal.calendar.account.usecase.RegisterPlainAuthAccountUseCase
 import kr.dataportal.calendar.hashSHA512
@@ -36,10 +35,13 @@ internal class RegisterPlainAuthAccountTest {
 
     private lateinit var sut: RegisterPlainAuthAccountUseCase
 
+    private val accountSlot = slot<AccountJpaEntity>()
+    private val accountAuthenticationSlot = slot<AccountAuthenticationJpaEntity>()
+
     @BeforeEach
     fun init() {
         val now = LocalDateTime.now()
-        val accountSlot = slot<AccountJpaEntity>()
+
         every {
             accountRepository.save(capture(accountSlot))
         } answers {
@@ -50,7 +52,6 @@ internal class RegisterPlainAuthAccountTest {
             }
         }
 
-        val accountAuthenticationSlot = slot<AccountAuthenticationJpaEntity>()
         every {
             accountAuthenticationRepository.save(capture(accountAuthenticationSlot))
         } answers {
@@ -84,7 +85,6 @@ internal class RegisterPlainAuthAccountTest {
     @Test
     fun `비밀번호를 SHA512 HexString 으로 해싱하여 가입한다`() {
         every { accountRepository.findByEmail(any()) } returns null
-        val accountAuthenticationSlot = slot<AccountAuthenticationJpaEntity>()
         every {
             accountAuthenticationRepository.save(capture(accountAuthenticationSlot))
         } answers {
@@ -100,7 +100,6 @@ internal class RegisterPlainAuthAccountTest {
             get { id } isEqualTo 1
             get { name } isEqualTo dummy.name
             get { phoneNumber } isEqualTo dummy.phoneNumber
-            get { authType } isEqualTo AccountAuthenticationType.PLAIN
         }
         expectThat(accountAuthenticationSlot.captured) {
             get { authText } isEqualTo hashSHA512(dummy.password)

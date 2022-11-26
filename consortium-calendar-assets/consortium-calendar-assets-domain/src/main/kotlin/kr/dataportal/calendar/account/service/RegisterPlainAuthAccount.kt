@@ -31,7 +31,7 @@ class RegisterPlainAuthAccount(
         val accountJpaEntity = AccountJpaEntity(name = name, email = email, phoneNumber = phoneNumber)
             .also(accountRepository::save)
 
-        val accountAuthenticationJpaEntity = AccountAuthenticationJpaEntity(
+        AccountAuthenticationJpaEntity(
             authType = AccountAuthenticationType.PLAIN,
             authText = hashSHA512(password),
             accountJpaEntity = accountJpaEntity
@@ -40,8 +40,7 @@ class RegisterPlainAuthAccount(
         return Account(
             name = accountJpaEntity.name,
             email = accountJpaEntity.email,
-            phoneNumber = accountJpaEntity.phoneNumber,
-            authType = accountAuthenticationJpaEntity.authType
+            phoneNumber = accountJpaEntity.phoneNumber
         ).entityData(accountJpaEntity)
     }
 }
