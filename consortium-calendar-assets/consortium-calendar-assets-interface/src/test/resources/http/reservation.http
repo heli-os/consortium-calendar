@@ -1,0 +1,20 @@
+### 단체 생성 - 성공
+POST http://localhost:8080/api/v1/reservation-page
+Content-Type: application/json
+X-ACCOUNT-ID: 2
+
+{
+  "title": "new reservation page",
+  "organizationId": 2,
+  "option": {
+    "reserveSlotCondition": {
+      "durationMinute": 5
+    },
+    "assignCondition": {
+      "possible": "ALL"
+    },
+    "publishCondition": {
+      "reserveAllowNumber": 10
+    }
+  }
+}
