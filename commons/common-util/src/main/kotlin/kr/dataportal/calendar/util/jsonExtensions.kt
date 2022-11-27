@@ -1,4 +1,4 @@
-package kr.dataportal.calendar
+package kr.dataportal.calendar.util
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect
 import com.fasterxml.jackson.annotation.PropertyAccessor

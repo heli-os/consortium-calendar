@@ -31,12 +31,7 @@ configure(subprojects.filter { it.name !in nonDependenciesProjects }) {
     val springCloudVersion: String by project
     val mockkVersion: String by project
     val striktVersion: String by project
-
     dependencies {
-        if (this@configure.name !in listOf("commons:common-model", "commons:common-util")) {
-            implementation(project(":commons:common-model"))
-            implementation(project(":commons:common-util"))
-        }
         // Kotlin Standard Library
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")

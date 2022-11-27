@@ -5,8 +5,8 @@ import kr.dataportal.calendar.account.domain.Account
 import kr.dataportal.calendar.account.exception.FailedLoginException
 import kr.dataportal.calendar.account.usecase.LoginPlainAuthAccountUseCase
 import kr.dataportal.calendar.config.entityData
-import kr.dataportal.calendar.hashSHA512
 import kr.dataportal.calendar.persistence.repository.account.AccountAuthenticationRepository
+import kr.dataportal.calendar.util.hashSHA512
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

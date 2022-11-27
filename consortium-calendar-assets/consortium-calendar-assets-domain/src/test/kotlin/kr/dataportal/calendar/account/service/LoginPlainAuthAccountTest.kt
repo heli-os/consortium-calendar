@@ -8,10 +8,10 @@ import io.mockk.verify
 import kr.dataportal.calendar.account.AccountAuthenticationType
 import kr.dataportal.calendar.account.exception.FailedLoginException
 import kr.dataportal.calendar.account.usecase.LoginPlainAuthAccountUseCase
-import kr.dataportal.calendar.hashSHA512
 import kr.dataportal.calendar.persistence.entity.account.AccountAuthenticationJpaEntity
 import kr.dataportal.calendar.persistence.entity.account.AccountJpaEntity
 import kr.dataportal.calendar.persistence.repository.account.AccountAuthenticationRepository
+import kr.dataportal.calendar.util.hashSHA512
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith

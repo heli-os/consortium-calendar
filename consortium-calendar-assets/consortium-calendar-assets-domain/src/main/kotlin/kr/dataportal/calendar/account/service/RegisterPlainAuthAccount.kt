@@ -5,11 +5,11 @@ import kr.dataportal.calendar.account.domain.Account
 import kr.dataportal.calendar.account.exception.AlreadyRegisteredEmailException
 import kr.dataportal.calendar.account.usecase.RegisterPlainAuthAccountUseCase
 import kr.dataportal.calendar.config.entityData
-import kr.dataportal.calendar.hashSHA512
 import kr.dataportal.calendar.persistence.entity.account.AccountAuthenticationJpaEntity
 import kr.dataportal.calendar.persistence.entity.account.AccountJpaEntity
 import kr.dataportal.calendar.persistence.repository.account.AccountAuthenticationRepository
 import kr.dataportal.calendar.persistence.repository.account.AccountRepository
+import kr.dataportal.calendar.util.hashSHA512
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

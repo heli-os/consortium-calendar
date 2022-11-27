@@ -1,8 +1,8 @@
 package kr.dataportal.calendar.config
 
-import kr.dataportal.calendar.notNull
 import kr.dataportal.calendar.persistence.config.jpa.BaseEntity
 import kr.dataportal.calendar.persistence.config.jpa.requiredId
+import kr.dataportal.calendar.util.notNull
 import java.time.LocalDateTime
 
 /**
