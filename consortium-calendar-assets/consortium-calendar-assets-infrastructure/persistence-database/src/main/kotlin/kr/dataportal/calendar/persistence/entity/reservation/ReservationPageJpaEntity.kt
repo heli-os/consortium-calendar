@@ -14,7 +14,7 @@ import javax.persistence.*
 @Table(name = "reservation_page")
 class ReservationPageJpaEntity(
     var title: String,
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "organization_id")
     val organizationJpaEntity: OrganizationJpaEntity,
     @Convert(converter = ReservationPageOption.Converter::class)

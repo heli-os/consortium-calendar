@@ -115,5 +115,9 @@ class InitializeLocalConfiguration(
                 name = "workspace"
             )
         )
+
+        val existReservationPage = reservationRestController.reservationPage(
+            reservationPageId = reservationPage.id
+        )
     }
 }
