@@ -1,6 +1,6 @@
 package kr.dataportal.calendar.persistence.config.jpa
 
-import kr.dataportal.calendar.notNull
+import kr.dataportal.calendar.util.notNull
 import java.time.LocalDateTime
 import javax.persistence.*
 

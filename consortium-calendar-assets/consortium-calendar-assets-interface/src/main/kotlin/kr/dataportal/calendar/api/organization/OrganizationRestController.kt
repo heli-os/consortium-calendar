@@ -1,5 +1,6 @@
 package kr.dataportal.calendar.api.organization
 
+import kr.dataportal.calendar.config.auditing.Auditing.ACCOUNT_HEADER_NAME
 import kr.dataportal.calendar.organization.domain.Organization
 import kr.dataportal.calendar.organization.domain.OrganizationMember
 import kr.dataportal.calendar.organization.usecase.CreateOrganizationUseCase
@@ -18,10 +19,6 @@ class OrganizationRestController(
     private val queryOrganizationByIdUseCase: QueryOrganizationByIdUseCase,
     private val joinOrganizationUseCase: JoinOrganizationUseCase
 ) {
-
-    companion object {
-        private const val ACCOUNT_HEADER_NAME = "X-ACCOUNT-ID"
-    }
 
     @PostMapping("/api/v1/organization")
     fun createOrganization(

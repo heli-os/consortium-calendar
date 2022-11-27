@@ -1,4 +1,4 @@
-package kr.dataportal.calendar
+package kr.dataportal.calendar.util
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
